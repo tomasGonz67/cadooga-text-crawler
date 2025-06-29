@@ -1,0 +1,60 @@
+URL: https://portfolio-beige-ten-56.vercel.app/
+Title: 
+Description: 
+Text: ProjectsAbout MeResumeContact MeProjectsClick on any to demoMock Blog Website Collaborated with a team to design and develop a mock blog website that fetches content from a Drupal CMS using client-side rendering (CSR). I deployed the application on a cloud virtual machine (VM), using Namecheap for domain registration. I containerized both the Drupal CMS and the frontend service with Docker. I Configured Traefik as a reverse proxy and load balancer to manage routing and traffic between services. ...
+--------------------------------------------------------------------------------
+
+URL: https://portfolio-beige-ten-56.vercel.app/about
+Title: 
+Description: 
+Text: ProjectsAbout MeResumeContact MeAbout MeTechnical Background Hi, I’m Tomas Gonzalez, a technology enthusiast with an education in Computer Science and Information Technology. I’ve focused my education on software engineering, while also developing strong technical skills in infrastructure, networking, and systems administration. I have been developing apps with AI recently using Model Context Protocol, Function Calling, and more. With my specialization in web development I am able to build scala...
+--------------------------------------------------------------------------------
+
+URL: https://portfolio-beige-ten-56.vercel.app/resume
+Title: 
+Description: 
+Text: ProjectsAbout MeResumeContact MeClick for full resumeWebsite made with NextJS (SSG), Typescript, Wordpress, and WPgraphQL....
+--------------------------------------------------------------------------------
+
+URL: https://portfolio-beige-ten-56.vercel.app/contact
+Title: 
+Description: 
+Text: ProjectsAbout MeResumeContact MeContact MeNameEmailSubjectMessageSend MessageContact form uses AWS SESWebsite made with NextJS (SSG), Typescript, Wordpress, and WPgraphQL....
+--------------------------------------------------------------------------------
+
+URL: https://www.is373project.me/
+Title: AI Insights
+Description: 
+Text: AI Insights InnovaAI Home Blog About Log In Unleash your Potential to Create in AI Start your AI journey with hands-on projects and guided articles that empower you to create, build, and innovate AI Explore Articles Join Us Hey there! At InnovaAI, we believe in democratizing Artificial Intelligence. Our mission is to make AI accessible to everyone through insightful articles, hands-on projects, and community-driven discussions. 50+ AI Articles 10K+ Active Readers 100+ Contributors Featured AI Ar...
+--------------------------------------------------------------------------------
+
+URL: https://host-472cc.web.app/
+Title: React App
+Description: Web site created using create-react-app
+Text: React AppYou need to enable JavaScript to run this app....
+--------------------------------------------------------------------------------
+
+URL: https://github.com/tomasGonz67
+Title: tomasGonz67 (Tomas Gonzalez) · GitHub
+Description: NJIT Student. tomasGonz67 has 35 repositories available. Follow their code on GitHub.
+Text: tomasGonz67 (Tomas Gonzalez) · GitHub Skip to content Navigation Menu Toggle navigation Sign in Appearance settings Product GitHub Copilot Write better code with AI GitHub Models New Manage and compare prompts GitHub Advanced Security Find and fix vulnerabilities Actions Automate any workflow Codespaces Instant dev environments Issues Plan and track work Code Review Manage code changes Discussions Collaborate outside of code Code Search Find more, search less Explore Why GitHub All features Docu...
+--------------------------------------------------------------------------------
+
+URL: https://www.linkedin.com/in/tomas-gonzalez-4aa6372b0/
+Title: 
+Description: 
+Text: ...
+--------------------------------------------------------------------------------
+
+URL: https://www.is373project.me/index.html
+Title: AI Insights
+Description: 
+Text: AI Insights InnovaAI Home Blog About Log In Unleash your Potential to Create in AI Start your AI journey with hands-on projects and guided articles that empower you to create, build, and innovate AI Explore Articles Join Us Hey there! At InnovaAI, we believe in democratizing Artificial Intelligence. Our mission is to make AI accessible to everyone through insightful articles, hands-on projects, and community-driven discussions. 50+ AI Articles 10K+ Active Readers 100+ Contributors Featured AI Ar...
+--------------------------------------------------------------------------------
+
+URL: https://www.is373project.me/articles.html
+Title: AI Articles
+Description: 
+Text: AI Articles InnovaAI Home Blog About Log In Explore All AI Articles Dive into our collection of insightful AI content, from healthcare advancements to ethical dilemmas and future trends. All Topics Healthcare Ethics Future of AI AI in Healthcare Discover how AI is revolutionizing healthcare with innovative solutions. Healthcare AI Ethics Explore the ethical implications of artificial intelligence technologies. Ethics Future of AI Get insights into the future trends and advancements in AI. Future...
+--------------------------------------------------------------------------------
+

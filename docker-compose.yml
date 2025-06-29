@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  text-crawler-api:
+    build: .
+    container_name: cadooga-text-crawler-api
+    ports:
+      - "8000:8000"
+    volumes:
+      # Mount current directory to /app for development
+      - .:/app
+      # Mount output directory to persist results
+      - ./output:/app/output
+    environment:
+      - PYTHONUNBUFFERED=1
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health/live"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    restart: unless-stopped
+    # Override default command to run example
+    command: python example.py
+    # Alternative: run interactive shell for development
+    # command: /bin/bash 

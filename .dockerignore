@@ -1,0 +1,35 @@
+# Git files
+.git
+.gitignore
+
+# Python cache
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+
+# Virtual environments
+venv/
+env/
+ENV/
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Output files (will be created in container)
+crawled_data.txt
+crawled_data.json
+*.db
+
+# Docker files
+Dockerfile
+.dockerignore 
