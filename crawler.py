@@ -18,16 +18,18 @@ logger = logging.getLogger(__name__)
 class TextCrawler:
     """Basic text crawler for extracting content from web pages."""
     
-    def __init__(self, delay: float = 1.0, max_pages: int = 100):
+    def __init__(self, delay: float = 1.0, max_pages: int = 100, use_database: bool = False):
         """
         Initialize the crawler.
         
         Args:
             delay: Delay between requests in seconds
             max_pages: Maximum number of pages to crawl
+            use_database: Whether to save data to database
         """
         self.delay = delay
         self.max_pages = max_pages
+        self.use_database = use_database
         self.session = requests.Session()
         self.session.headers.update({
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
@@ -37,6 +39,16 @@ class TextCrawler:
         self.visited_urls = set()
         self.crawled_data = []
         self.page_count = 0
+        
+        # Database setup
+        if self.use_database:
+            try:
+                from database import get_db, init_db
+                init_db()
+                logger.info("Database initialized successfully")
+            except Exception as e:
+                logger.error(f"Failed to initialize database: {e}")
+                self.use_database = False
     
     def crawl(self, start_urls: List[str]) -> List[Dict]:
         """
@@ -64,6 +76,10 @@ class TextCrawler:
                 if page_data:
                     self.crawled_data.append(page_data)
                     self.page_count += 1
+                    
+                    # Save to database if enabled
+                    if self.use_database:
+                        self._save_to_database(page_data)
                     
                     # Extract new links if we haven't reached the limit
                     if self.page_count < self.max_pages:
@@ -196,6 +212,24 @@ class TextCrawler:
         except:
             return False
     
+    def _save_to_database(self, data: Dict):
+        """
+        Save crawled data to database.
+        
+        Args:
+            data: Dictionary containing crawled page data
+        """
+        if not self.use_database:
+            return
+            
+        try:
+            from database import get_db, save_crawled_data
+            db = next(get_db())
+            save_crawled_data(data, db)
+            logger.info(f"Saved to database: {data['url']}")
+        except Exception as e:
+            logger.error(f"Failed to save to database: {e}")
+    
     def save_to_file(self, filename: str, format: str = 'txt'):
         """
         Save crawled data to file.
@@ -227,8 +261,20 @@ class TextCrawler:
         Returns:
             Dictionary with crawling statistics
         """
-        return {
+        stats = {
             'pages_crawled': self.page_count,
             'urls_visited': len(self.visited_urls),
             'data_collected': len(self.crawled_data)
-        } 
+        }
+        
+        # Add database stats if using database
+        if self.use_database:
+            try:
+                from database import get_db, get_stats as get_db_stats
+                db = next(get_db())
+                db_stats = get_db_stats(db)
+                stats.update(db_stats)
+            except Exception as e:
+                logger.error(f"Failed to get database stats: {e}")
+        
+        return stats 

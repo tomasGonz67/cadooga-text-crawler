@@ -1,6 +1,24 @@
 version: '3.8'
 
 services:
+  postgres:
+    image: postgres:15
+    container_name: cadooga-text-crawler-postgres
+    environment:
+      POSTGRES_DB: text_crawler_db
+      POSTGRES_USER: crawler_user
+      POSTGRES_PASSWORD: crawler_password
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U crawler_user -d text_crawler_db"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
   text-crawler-api:
     build: .
     container_name: cadooga-text-crawler-api
@@ -13,6 +31,10 @@ services:
       - ./output:/app/output
     environment:
       - PYTHONUNBUFFERED=1
+      - DATABASE_URL=postgresql://crawler_user:crawler_password@postgres:5432/text_crawler_db
+    depends_on:
+      postgres:
+        condition: service_healthy
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8000/health/live"]
       interval: 30s
@@ -24,3 +46,6 @@ services:
     command: python example.py
     # Alternative: run interactive shell for development
     # command: /bin/bash 
+
+volumes:
+  postgres_data: 

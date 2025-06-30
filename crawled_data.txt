@@ -22,12 +22,6 @@ Description:
 Text: ProjectsAbout MeResumeContact MeContact MeNameEmailSubjectMessageSend MessageContact form uses AWS SESWebsite made with NextJS (SSG), Typescript, Wordpress, and WPgraphQL....
 --------------------------------------------------------------------------------
 
-URL: https://www.is373project.me/
-Title: AI Insights
-Description: 
-Text: AI Insights InnovaAI Home Blog About Log In Unleash your Potential to Create in AI Start your AI journey with hands-on projects and guided articles that empower you to create, build, and innovate AI Explore Articles Join Us Hey there! At InnovaAI, we believe in democratizing Artificial Intelligence. Our mission is to make AI accessible to everyone through insightful articles, hands-on projects, and community-driven discussions. 50+ AI Articles 10K+ Active Readers 100+ Contributors Featured AI Ar...
---------------------------------------------------------------------------------
-
 URL: https://host-472cc.web.app/
 Title: React App
 Description: Web site created using create-react-app
@@ -46,15 +40,21 @@ Description:
 Text: ...
 --------------------------------------------------------------------------------
 
-URL: https://www.is373project.me/index.html
-Title: AI Insights
-Description: 
-Text: AI Insights InnovaAI Home Blog About Log In Unleash your Potential to Create in AI Start your AI journey with hands-on projects and guided articles that empower you to create, build, and innovate AI Explore Articles Join Us Hey there! At InnovaAI, we believe in democratizing Artificial Intelligence. Our mission is to make AI accessible to everyone through insightful articles, hands-on projects, and community-driven discussions. 50+ AI Articles 10K+ Active Readers 100+ Contributors Featured AI Ar...
+URL: https://github.com/tomasGonz67#start-of-content
+Title: tomasGonz67 (Tomas Gonzalez) · GitHub
+Description: NJIT Student. tomasGonz67 has 35 repositories available. Follow their code on GitHub.
+Text: tomasGonz67 (Tomas Gonzalez) · GitHub Skip to content Navigation Menu Toggle navigation Sign in Appearance settings Product GitHub Copilot Write better code with AI GitHub Models New Manage and compare prompts GitHub Advanced Security Find and fix vulnerabilities Actions Automate any workflow Codespaces Instant dev environments Issues Plan and track work Code Review Manage code changes Discussions Collaborate outside of code Code Search Find more, search less Explore Why GitHub All features Docu...
 --------------------------------------------------------------------------------
 
-URL: https://www.is373project.me/articles.html
-Title: AI Articles
-Description: 
-Text: AI Articles InnovaAI Home Blog About Log In Explore All AI Articles Dive into our collection of insightful AI content, from healthcare advancements to ethical dilemmas and future trends. All Topics Healthcare Ethics Future of AI AI in Healthcare Discover how AI is revolutionizing healthcare with innovative solutions. Healthcare AI Ethics Explore the ethical implications of artificial intelligence technologies. Ethics Future of AI Get insights into the future trends and advancements in AI. Future...
+URL: https://github.com/
+Title: GitHub · Build and ship software on a single, collaborative platform · GitHub
+Description: GitHub is where people build software. More than 150 million people use GitHub to discover, fork, and contribute to over 420 million projects.
+Text: GitHub · Build and ship software on a single, collaborative platform · GitHub Skip to content Navigation Menu Toggle navigation Sign in Product GitHub Copilot Write better code with AI GitHub Models New Manage and compare prompts GitHub Advanced Security Find and fix vulnerabilities Actions Automate any workflow Codespaces Instant dev environments Issues Plan and track work Code Review Manage code changes Discussions Collaborate outside of code Code Search Find more, search less Explore Why GitH...
+--------------------------------------------------------------------------------
+
+URL: https://github.com/login?return_to=https%3A%2F%2Fgithub.com%2FtomasGonz67
+Title: Sign in to GitHub · GitHub
+Description: GitHub is where people build software. More than 150 million people use GitHub to discover, fork, and contribute to over 420 million projects.
+Text: Sign in to GitHub · GitHub Skip to content You signed in with another tab or window. Reload to refresh your session. You signed out in another tab or window. Reload to refresh your session. You switched accounts on another tab or window. Reload to refresh your session. Dismiss alert Sign in to GitHub Username or email address Password Forgot password? Uh oh! There was an error while loading. Please reload this page. Password login alternatives Sign in with a passkey New to GitHub? Create an acco...
 --------------------------------------------------------------------------------
 
