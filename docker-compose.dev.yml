@@ -20,10 +20,10 @@ services:
     restart: unless-stopped
 
   text-crawler-api:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile
     container_name: cadooga-text-crawler-api
-    ports:
-      - "8000:8000"
     volumes:
       # Mount current directory to /app for development
       - .:/app
@@ -32,6 +32,9 @@ services:
     environment:
       - PYTHONUNBUFFERED=1
       - DATABASE_URL=postgresql://crawler_user:crawler_password@postgres:5432/text_crawler_db
+    #8000:8000 for local, 8001:8000 for prod, 8003:8000 for dev
+    ports:
+      - "8001:8000"
     depends_on:
       postgres:
         condition: service_healthy
@@ -43,7 +46,6 @@ services:
       start_period: 40s
     restart: unless-stopped
     # Override default command to run example
-    command: python example.py
     # Alternative: run interactive shell for development
     # command: /bin/bash 
 
