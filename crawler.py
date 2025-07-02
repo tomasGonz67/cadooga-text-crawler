@@ -18,7 +18,7 @@ logger = logging.getLogger(__name__)
 class TextCrawler:
     """Basic text crawler for extracting content from web pages."""
     
-    def __init__(self, delay: float = 1.0, max_pages: int = 100, use_database: bool = False):
+    def __init__(self, delay: float = 1.0, max_pages: int = 10, use_database: bool = False):
         """
         Initialize the crawler.
         
@@ -50,12 +50,13 @@ class TextCrawler:
                 logger.error(f"Failed to initialize database: {e}")
                 self.use_database = False
     
-    def crawl(self, start_urls: List[str]) -> List[Dict]:
+    def crawl(self, start_urls: List[str], progress_callback=None) -> List[Dict]:
         """
         Crawl websites starting from the given URLs.
         
         Args:
             start_urls: List of URLs to start crawling from
+            progress_callback: Optional callback called with the number of pages crawled after each page
             
         Returns:
             List of dictionaries containing crawled data
@@ -76,6 +77,9 @@ class TextCrawler:
                 if page_data:
                     self.crawled_data.append(page_data)
                     self.page_count += 1
+                    
+                    if progress_callback:
+                        progress_callback(self.page_count)
                     
                     # Save to database if enabled
                     if self.use_database:

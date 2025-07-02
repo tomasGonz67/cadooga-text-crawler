@@ -11,9 +11,7 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy application files
-COPY crawler.py .
-COPY example.py .
-COPY api.py .
+COPY . .
 
 # Create a directory for output files
 RUN mkdir -p /app/output
@@ -26,4 +24,4 @@ ENV PYTHONPATH=/app
 EXPOSE 8000
 
 # Default command to run the FastAPI server
-CMD ["uvicorn", "api:app", "--host", "0.0.0.0", "--port", "8000"] 
+CMD ["./startup.sh"] 

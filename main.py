@@ -10,8 +10,10 @@ import time
 import logging
 from datetime import datetime
 import os
+import threading
 
 from crawler import TextCrawler
+from example import run_example_crawler, crawler_instance, crawler_results
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
@@ -33,6 +35,7 @@ crawler_status = {
     "errors": [],
     "last_activity": None
 }
+
 
 # Initialize crawler instance
 crawler = None
@@ -99,53 +102,35 @@ async def get_status():
         }
     }
 
-@app.post("/crawl")
-async def start_crawl(request: CrawlRequest, background_tasks: BackgroundTasks):
-    """Start a new crawling job"""
-    global crawler, crawler_status
-    
-    if crawler_status["is_running"]:
-        raise HTTPException(status_code=409, detail="Crawler is already running")
-    
-    # Initialize crawler
-    crawler = TextCrawler(delay=request.delay, max_pages=request.max_pages)
-    
-    # Update status
-    crawler_status.update({
-        "is_running": True,
-        "start_time": time.time(),
-        "end_time": None,
-        "pages_crawled": 0,
-        "errors": [],
-        "last_activity": datetime.now().isoformat()
-    })
-    
-    # Start crawling in background
-    background_tasks.add_task(run_crawler, request.urls)
-    
-    return {
-        "message": "Crawling started",
-        "job_id": int(time.time()),
-        "urls": request.urls,
-        "max_pages": request.max_pages,
-        "delay": request.delay
-    }
+# Function to run the crawler in a background thread and update status
+def threaded_crawler():
+    global crawler
+    crawler_status["is_running"] = True
+    crawler_status["start_time"] = time.time()
+    crawler_status["end_time"] = None
+    crawler_status["pages_crawled"] = 0
+    crawler_status["errors"] = []
+    crawler_status["last_activity"] = datetime.now().isoformat()
+    try:
+        crawler, results = run_example_crawler(progress_callback=update_crawler_status)
+        crawler_status["is_running"] = False
+        crawler_status["end_time"] = time.time()
+        crawler_status["pages_crawled"] = len(results) if results else 0
+        crawler_status["last_activity"] = datetime.now().isoformat()
+    except Exception as e:
+        crawler_status["is_running"] = False
+        crawler_status["end_time"] = time.time()
+        crawler_status["errors"].append(str(e))
+        crawler_status["last_activity"] = datetime.now().isoformat()
 
-@app.post("/crawl/stop")
-async def stop_crawl():
-    """Stop the current crawling job"""
-    global crawler_status
-    
-    if not crawler_status["is_running"]:
-        raise HTTPException(status_code=409, detail="No crawler is running")
-    
-    crawler_status.update({
-        "is_running": False,
-        "end_time": time.time(),
-        "last_activity": datetime.now().isoformat()
-    })
-    
-    return {"message": "Crawling stopped", "timestamp": datetime.now().isoformat()}
+def update_crawler_status(pages_crawled):
+    crawler_status["pages_crawled"] = pages_crawled
+    crawler_status["last_activity"] = datetime.now().isoformat()
+
+@app.on_event("startup")
+async def on_startup():
+    thread = threading.Thread(target=threaded_crawler, daemon=True)
+    thread.start()
 
 @app.get("/crawl/results")
 async def get_results():
@@ -159,8 +144,8 @@ async def get_results():
     
     return {
         "stats": stats,
-        "data_count": len(crawler.crawled_data),
-        "sample_data": crawler.crawled_data[:3] if crawler.crawled_data else []
+        "data_count": len(crawler_results) if crawler_results else 0,
+        "sample_data": crawler_results[:3] if crawler_results else []
     }
 
 async def run_crawler(urls: List[str]):
@@ -208,4 +193,4 @@ async def global_exception_handler(request, exc):
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000) 
+    uvicorn.run(app, host="0.0.0.0", port=8000)

@@ -9,7 +9,6 @@ from sqlalchemy.sql import func
 import os
 from typing import Optional
 
-# Database configuration
 DATABASE_URL = os.getenv(
     'DATABASE_URL', 
     'postgresql://crawler_user:crawler_password@localhost:5432/text_crawler_db'

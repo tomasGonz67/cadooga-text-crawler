@@ -5,6 +5,26 @@ Example usage of the basic text crawler with database integration
 from crawler import TextCrawler
 from database import get_db, get_crawled_pages, get_stats as get_db_stats
 
+crawler_instance = None
+crawler_results = None
+
+def run_example_crawler(progress_callback=None):
+    """Run the example crawler and return the crawler instance and results. Calls progress_callback(pages_crawled) after each page if provided."""
+    global crawler_instance, crawler_results
+    crawler_instance = TextCrawler(
+        delay=1.0,
+        max_pages=10,
+        use_database=True
+    )
+    start_urls = [
+        'https://portfolio-beige-ten-56.vercel.app/',
+    ]
+    crawler_instance.crawled_data = []  # ensure clean
+    results = crawler_instance.crawl(start_urls, progress_callback=progress_callback)
+    crawler_results = results
+    crawler_instance.save_to_file('crawled_data.txt', format='txt')
+    crawler_instance.save_to_file('crawled_data.json', format='json')
+    return crawler_instance, results
 
 def main():
     """Example of how to use the TextCrawler with database storage."""
