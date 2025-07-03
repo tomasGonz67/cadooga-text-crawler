@@ -55,7 +55,7 @@ class HealthResponse(BaseModel):
 @app.get("/")
 async def root():
     """Root endpoint"""
-    return {"message": "Text Crawler API is running", "version": "cuck  hold 3.2"}
+    return {"message": "Text Crawler API is running", "version": "1.0.0"}
 
 @app.get("/health", response_model=HealthResponse)
 async def health_check():
