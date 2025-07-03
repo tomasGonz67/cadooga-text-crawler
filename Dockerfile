@@ -22,6 +22,7 @@ ENV PYTHONUNBUFFERED=1
 ENV PYTHONPATH=/app
 
 #make this shit work. I hate this dang error.
+COPY ./entrypoint.sh .
 RUN chmod +x /app/entrypoint.sh
 
 # Expose API port
